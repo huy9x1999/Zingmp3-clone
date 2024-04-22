@@ -1,0 +1,58 @@
+.flex-hihi {
+  display: flex;
+}
+
+.order-hihi {
+  transition: order 1s ease-in-out;
+}
+
+.order-1-hihi {
+  order: 1;
+}
+
+.order-2-hihi {
+  order: 3;
+}
+
+.slider-container {
+  position: relative;
+  width: 100%;
+  max-width: 600px; /* Điều chỉnh độ rộng của slider tại đây */
+  margin: auto;
+  overflow: hidden;
+}
+
+.slider {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.slide {
+  min-width: 100%;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+}
+
+.prev,
+.next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.5);
+  border: none;
+  color: black;
+  padding: 10px;
+  cursor: pointer;
+  outline: none;
+}
+
+.prev {
+  left: 0;
+}
+
+.next {
+  right: 0;
+}
