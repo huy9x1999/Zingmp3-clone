@@ -12,15 +12,9 @@ import NewReleaseChart from "../../components/NewReleaseChart";
 import WeakChart from "../../components/WeakChart";
 import arrayUtitl from "../../utils/arrayUtil";
 import RecentPlaylist from "../../components/RecentPlaylist";
+import Livestream from "../../components/Livestream";
 
 const Home = () => {
-  const {
-    MdOutlineArrowForwardIos,
-    TbPlayerPlayFilled,
-    GoHeart,
-    PiDotsThreeBold
-  } = icons;
-
   const { listImgConnect } = arrayUtitl;
   const { homeData } = useSelector((state) => state.app);
 
@@ -46,6 +40,8 @@ const Home = () => {
           return <NewReleaseChart key={index} data={item} />;
         case "weekChart":
           return <WeakChart key={index} data={item} />;
+        case "livestream":
+          return <Livestream key={index} data={item} />;
         default:
           break;
       }

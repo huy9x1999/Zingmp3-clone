@@ -1,9 +1,8 @@
 import actionType from "../actions/actionTypes";
 
 const initState = {
-  banner: [],
-  newReleaseChart: [],
-  homeData: []
+  homeData: [],
+  isPlaying: false
 };
 
 const appReducer = (state = initState, action) => {
@@ -11,16 +10,15 @@ const appReducer = (state = initState, action) => {
     case actionType.GET_HOME:
       return {
         ...state,
-        banner:
-          action.homeData?.find((item) => item.sectionType === "banner")
-            .items || null,
-        newReleaseChart:
-          action.homeData?.find(
-            (item) => item.sectionType === "newReleaseChart"
-          ).items || null,
         homeData: action.homeData
       };
-
+    case actionType.CHANGE_ISPLAING:{
+      return {
+        ...state,
+        isPlaying: action.isPlaying
+      };
+    }
+      
     default:
       return state;
   }

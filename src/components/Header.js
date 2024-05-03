@@ -23,14 +23,14 @@ const Header = () => {
       </div>
       <div className="flex flex-grow-0 flex-shrink-0 items-center">
         <a
-          className="inline-block mr-3 py-[10px] px-5 rounded-[100px] bg-[#0e8080] hover:bg-[#0e8080]/80 text-white text-[14px] tracking-[0.1px] leading-[20px] font-bold"
+          className="inline-block mr-3 py-[10px] px-5 rounded-[100px] bg-third hover:bg-third/80 text-white text-[14px] tracking-[0.1px] leading-[20px] font-bold"
           href="/"
           target="_blank"
         >
           Nâng cấp tài khoản
         </a>
         <a
-          className="flex gap-1 mr-3 py-[10px] px-6 rounded-[100px] text-[#0e8080] bg-[hsla(0,0%,100%,0.3)] text-[14px] tracking-[0.1px] leading-[20px] font-bold"
+          className="flex gap-1 mr-3 py-[10px] px-6 rounded-[100px] text-third bg-[hsla(0,0%,100%,0.3)] text-[14px] tracking-[0.1px] leading-[20px] font-bold"
           href="/"
           target="_blank"
         >

@@ -4,9 +4,8 @@ import TitleSection from "./TitleSection";
 import { Link, NavLink } from "react-router-dom";
 import PlayMusic from "./PlayMusic";
 import icons from "../utils/icons";
-import { getTimeStamp } from "../utils/fn";
 import { useDispatch } from "react-redux";
-import * as action from '../store/actions'
+import * as action from "../store/actions";
 
 const PlayList = ({ sortDescription, data }) => {
   const { MdOutlineArrowForwardIos } = icons;
@@ -16,7 +15,8 @@ const PlayList = ({ sortDescription, data }) => {
 
   const handleClick = (item) => {
     if (item?.type === 1) {
-      dispatch(action.setCurSongId(item.encodeId))
+      dispatch(action.setCurSongId(item.encodeId));
+      dispatch(action.playAlbum(true))
     }
   };
   return (
@@ -24,7 +24,11 @@ const PlayList = ({ sortDescription, data }) => {
       <div className="flex items-center justify-between mb-5">
         <TitleSection>{title}</TitleSection>
         {data?.link && (
-          <Link key={data?.link} to={data?.link} className="text-tx-gray font-medium items-center flex">
+          <Link
+            key={data?.link}
+            to={data?.link}
+            className="text-tx-gray font-medium items-center flex"
+          >
             <span className="text-[12px] uppercase">Tất cả</span>
             <MdOutlineArrowForwardIos size={12} className="ml-2 -mt-0.5" />
           </Link>
@@ -32,15 +36,23 @@ const PlayList = ({ sortDescription, data }) => {
       </div>
       <div className="grid grid-cols-4 gap-7">
         {items
-          .map((item,index) => (
+          .map((item, index) => (
             <div key={index}>
-              <NavLink to={item.link} className="block relative group overflow-hidden rounded">
+              <NavLink
+                to={item.link.split(".")[0]}
+                className="block relative group overflow-hidden rounded"
+              >
                 <img
-                  className=" group-hover:scale-125 transition-transform duration-500 ease-in-out"
+                  className="group-hover:scale-125 transition-transform duration-500 ease-in-out"
                   src={item.thumbnailM}
                   alt=""
                 />
-                <PlayMusic onPlay={()=>handleClick(item.encodeId)} className="hidden group-hover:flex" />
+                <div
+                  className="hidden group-hover:flex"
+                  onClick={() => handleClick(item.encodeId)}
+                >
+                  <PlayMusic isPlay />
+                </div>
               </NavLink>
               <div className="mt-3">
                 {item.sortDescription ? (
@@ -58,13 +70,21 @@ const PlayList = ({ sortDescription, data }) => {
                       {item.artistsNames.split(",").map((text, index) => {
                         if (index === item.artistsNames.split(",").length - 1) {
                           return (
-                            <Link key={index} to="" className="pr-[3px] hover:underline">
+                            <Link
+                              key={index}
+                              to=""
+                              className="pr-[3px] hover:underline"
+                            >
                               {text}
                             </Link>
                           );
                         }
                         return (
-                          <Link key={index} to="" className="pr-[4px] hover:underline">
+                          <Link
+                            key={index}
+                            to=""
+                            className="pr-[4px] hover:underline"
+                          >
                             {text + `,`}
                           </Link>
                         );

@@ -12,11 +12,14 @@ import {
 } from "react-icons/io5";
 import {
   MdOutlineArrowBackIos,
-  MdOutlineArrowForwardIos
+  MdOutlineArrowForwardIos,
+  MdPersonAddAlt 
 } from "react-icons/md";
 import {
   PiShuffleLight,
   PiRepeatLight,
+  PiSortAscendingThin,
+  PiMusicNotesSimpleLight  
 } from "react-icons/pi";
 
 const icons = {
@@ -34,7 +37,10 @@ const icons = {
   IoPlaySkipForwardSharp,
   PiShuffleLight,
   PiRepeatLight,
-  HiPause
+  HiPause,
+  PiSortAscendingThin,
+  PiMusicNotesSimpleLight,
+  MdPersonAddAlt
 };
 
 export default icons;

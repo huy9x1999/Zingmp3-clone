@@ -4,8 +4,8 @@ import TitleSection from "./TitleSection";
 import { Link } from "react-router-dom";
 import icons from "../utils/icons";
 import { chunkArray } from "../utils/fn";
-import { useDispatch } from "react-redux";
-import * as action from "../store/actions";
+import SmallThumbPlayMusic from "./SmallThumbPlayMusic";
+import { IconPremium } from "../utils/customIcons";
 
 const NewRelease = ({ data }) => {
   const {
@@ -14,18 +14,11 @@ const NewRelease = ({ data }) => {
     link
   } = data;
 
-  const { MdOutlineArrowForwardIos, TbPlayerPlayFilled, PiDotsThreeBold } = icons;
+  const { MdOutlineArrowForwardIos, PiDotsThreeBold } = icons;
   const [active, setActive] = useState(0);
 
   const handleChangeActive = (position) => {
     setActive(position);
-  };
-
-  const dispatch = useDispatch();
-
-  const handleClick = (item) => {
-    dispatch(action.setCurSongId(item.encodeId));
-    console.log(item);
   };
 
   const Item = ({ item }) => {
@@ -35,31 +28,31 @@ const NewRelease = ({ data }) => {
         className="p-2.5 hover:bg-[#FFFFFF4D] rounded group flex items-center"
       >
         <div className="flex items-center group-hover:w-4/5 group-hover:flex-grow-0 cursor-pointer">
-          <div className="mr-2.5 rounded overflow-hidden relative group flex-shrink-0">
-            <img
-              className="object-cover w-[60px] h-[60px]"
-              src={item.thumbnailM}
-              alt=""
-            />
-            <div
-              onClick={() => handleClick(item)}
-              className="hidden group-hover:flex text-white absolute top-0 left-0 w-full h-full z-5 bg-black/40 items-center justify-around"
-            >
-              <TbPlayerPlayFilled size={20} className="ml-0.5" />
+          <div className=" mr-2.5 rounded overflow-hidden relative group flex-shrink-0">
+            <div className="w-[60px] h-[60px]">
+              <SmallThumbPlayMusic notAtAlbum={true} item={item} />
             </div>
           </div>
           <div className="group-hover:w-7/12 flex flex-col flex-grow">
-            <Link
-              to={item.link}
-              className="group-hover:pr-0 pr-4 text-[15px] leading-5 font-medium text-primary hover:text-secondary block overflow-hidden max-w-full text-overflow-1-line"
-            >
-              {item.title}
-            </Link>
+            <span className="flex gap-2 items-center justify-start">
+              <Link to="/" className="text-overflow-1-line">
+                {item.title}
+              </Link>
+              {item.streamingStatus === 2 && (
+                <span>
+                  <IconPremium />
+                </span>
+              )}
+            </span>
             <p className="group-hover:pr-0 pr-4 mt-[3px] text-[13px] leading-[18px] text-overflow-1-line text-tx-gray">
               {item.artistsNames.split(",").map((text, index) => {
                 if (index === item.artistsNames.split(",").length - 1) {
                   return (
-                    <Link key={index} to="" className="pr-[3px] hover:underline">
+                    <Link
+                      key={index}
+                      to=""
+                      className="pr-[3px] hover:underline"
+                    >
                       {text}
                     </Link>
                   );

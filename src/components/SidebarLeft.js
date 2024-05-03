@@ -9,6 +9,8 @@ import {
 import NavLinkSidebar from "./NavLinkSidebar";
 import { NavLink } from "react-router-dom";
 import { IconAddPlus } from "../utils/customIcons";
+import path from "../utils/path";
+import { useNavigate } from "react-router-dom";
 
 const notActiveStyle =
   "border-l-[3px] border-transtion py-3 px-[21px] font-semibold text-primary/90 hover:text-secondary text-[14px] flex gap-3 items-center";
@@ -16,10 +18,15 @@ const activeStyle =
   "border-l-[3px] border-secondary py-3 px-[21px] bg-[hsla(0,0%,100%,0.3)] font-semibold text-secondary text-[14px] flex gap-3 items-center";
 
 const SidebarLeft = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="flex relative h-full flex-col bg-[hsla(0,0%,100%,0.3)] w-[240px]">
       <div className="pb-4 relative after:w-[100% - 50px] after:left-[25px] after:right-[25px]  after:bg-[#000]/10 after:h-[1px] after:absolute after:bottom-0">
-        <div className="w-full h-[70px] py-[15px] pr-[25px] pl-[27px] flex justify-start items-center">
+        <div
+          onClick={() => navigate(path.HOME)}
+          className="w-full h-[70px] py-[15px] pr-[25px] pl-[27px] flex justify-start items-center cursor-pointer"
+        >
           <img
             src={logo}
             alt="logo"
@@ -90,7 +97,9 @@ const SidebarLeft = () => {
       </div>
       <div className="absolute flex items-center justify-start border-t w-full border-neutral-400 px-6 h-[54px] bottom-0 left-0">
         <IconAddPlus size={24} />
-        <button className="ml-3 block font-semibold text-primary/90 hover:text-secondary text-[14.5px]">Tạo playlist mới</button>
+        <button className="ml-3 block font-semibold text-primary/90 hover:text-secondary text-[14.5px]">
+          Tạo playlist mới
+        </button>
       </div>
     </div>
   );

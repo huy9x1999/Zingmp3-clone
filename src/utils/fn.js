@@ -29,8 +29,70 @@ export function chunkArray(myArray, chunk_size) {
 export const getTimeStamp = (timestamp) => {
   // Ví dụ: 22/5/2013 00:00:00
   let secondsFromTimestamp = Math.floor(new Date(timestamp).getTime() / 1000);
-  if (secondsFromTimestamp - timestamp < 86400){
-   
+  if (secondsFromTimestamp - timestamp < 86400) {
   }
-    console.log(secondsFromTimestamp);
+  console.log(secondsFromTimestamp);
+};
+
+export const getDate = (timestamp) => {
+  // Ví dụ: 22/5/2013 00:00:00
+  var date = new Date(timestamp * 1000);
+  return date.toLocaleDateString("vi-VN", {
+    year: "numeric",
+    month: "numeric",
+    day: "numeric"
+  });
+};
+
+export const getYear = (timestamp) => {
+  // Ví dụ: 22/5/2013 00:00:00
+  var date = new Date(timestamp * 1000);
+
+  return date.toLocaleDateString("vi-VN", {
+    year: "numeric"
+  });
+};
+
+export const getPercentRadioTime = (hasSongRequest, inStart, inEnd) => {
+  if (hasSongRequest) {
+    return 0;
+  }
+
+  const start = inStart * 1000;
+  const end = inEnd * 1000;
+  const now = Date.now();
+  const getFull = end - start;
+  const getNow = now - start;
+
+  return (getNow / getFull) * 360;
+};
+
+export const getTimeFormMinute = (seconds) => {
+  // Tính số phút từ số giây
+  const minute = Math.floor(seconds / 60);
+  // Tính số giây từ số giây còn lại sau khi đã tính số phút
+  const hour =
+    Math.floor(minute / 60) >= 10
+      ? Math.floor(minute / 60) + " giờ"
+      : "0" + Math.floor(minute / 60) + " giờ";
+  const newMinute = minute % 60;
+  // Trả về thời gian trong định dạng phút:giây
+
+  if (Math.floor(minute / 60) === 0) {
+    return newMinute >= 10 ? newMinute + " phút" : "0" + newMinute + " phút";
+  }
+  return (
+    hour +
+    " : " +
+    (newMinute >= 10 ? newMinute + " phút" : "0" + newMinute + " phút")
+  );
+};
+
+export const converNumber = (numebr) => {
+  let convertNumber = numebr + "";
+  if (numebr > 999) {
+    return convertNumber.substring(0, convertNumber.length - 4) + "k";
+  }
+
+  return numebr;
 };

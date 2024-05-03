@@ -24,4 +24,10 @@ export const getHome = () => async (dispatch) => {
     });
   }
 };
-new Promise(async (resolve, reject) => {});
+
+export const changeIsPlaying = (isPlaying) => {
+  return {
+    type: actionType.CHANGE_ISPLAING,
+    isPlaying
+  };
+};

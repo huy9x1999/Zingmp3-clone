@@ -5,7 +5,13 @@ export const setCurSongId = (songId) => ({
   songId
 });
 
-export const changeIsPlaying = (flag) => ({
-  type: actionType.CHANGE_ISPLAING,
+export const playAlbum = (flag) => ({
+  type: actionType.SET_ALBUM,
   flag
 });
+
+export const addSongs = (songs) => ({
+  type: actionType.ADD_SONGS,
+  songs
+});
+

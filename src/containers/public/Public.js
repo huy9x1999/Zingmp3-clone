@@ -1,9 +1,11 @@
 import React, { useCallback, useRef } from "react";
 import { Outlet } from "react-router-dom";
 import { Header, SidebarLeft, SidebarRight, Player } from "../../components";
+import { useSelector } from "react-redux";
 
 const Public = () => {
   const stickyRef = useRef(null);
+  const { curSongId } = useSelector((state) => state.music);
 
   const hanldeCheckSticky = useCallback((sticky) => {
     if (sticky.current.offsetTop > 5) {
@@ -15,15 +17,17 @@ const Public = () => {
     }
   }, []);
 
-  
-
   return (
     <div className="w-full relative h-screen overflow-y-auto bg-[#ced9d9]">
-      <div className="w-full flex h-[calc(100%-90px)]">
+      <div
+        className={`w-full flex ${
+          curSongId ? "h-[calc(100%-90px)]" : "h-full"
+        } relative`}
+      >
         <div className="w-[240px] flex-none">
           <SidebarLeft />
         </div>
-        <div className="w-[calc(100%-240px)] 1600:w-[calc(100%-569px)]">
+        <div className="w-[calc(100%-240px)] -mr-1.5 1600:w-[calc(100%-569px)]">
           <div
             onScroll={() => hanldeCheckSticky(stickyRef)}
             className="relative w-full h-full overflow-y-scroll scroll-container"
@@ -39,13 +43,15 @@ const Public = () => {
             </div>
           </div>
         </div>
-        <div className="w-[329px] hidden 1600:flex h-screen flex-none border border-green-500 animate-slide-left">
+        <div className="absolute z-[100] right-0 top-0 w-[329px] bg-green-300 1600:flex h-screen flex-none border border-green-500 animate-slide-left pb-[90px]">
           <SidebarRight />
         </div>
       </div>
-      <div className="flex-none h-[90px] z-30">
-        <Player />
-      </div>
+      {curSongId && (
+        <div className="relative flex-none h-[90px] z-[100]">
+          <Player />
+        </div>
+      )}
     </div>
   );
 };

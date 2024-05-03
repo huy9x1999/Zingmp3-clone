@@ -1,9 +1,10 @@
 import React, { useCallback, useRef } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import Section from "./Section";
 import * as action from "../store/actions";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
+import { useNavigate } from "react-router-dom";
 
 // Import Swiper styles
 import "swiper/css";
@@ -11,6 +12,7 @@ import icons from "../utils/icons";
 const SliderBanner = ({ data }) => {
   const { items } = data;
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const sliderRef = useRef(null);
   const { MdOutlineArrowBackIos, MdOutlineArrowForwardIos } = icons;
@@ -28,6 +30,13 @@ const SliderBanner = ({ data }) => {
   const handleClick = (item) => {
     if (item?.type === 1) {
       dispatch(action.setCurSongId(item.encodeId));
+      dispatch(action.playAlbum(false))
+    } else if (item?.type === 3 || item?.type === 4) {
+      const albumPath = item?.link.split('.')[0];
+      navigate(albumPath);
+      dispatch(action.playAlbum(true))
+    }else{
+      dispatch(action.playAlbum(false))
     }
   };
 
