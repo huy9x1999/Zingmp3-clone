@@ -43,7 +43,7 @@ const Public = () => {
             </div>
           </div>
         </div>
-        <div className="absolute z-[100] right-0 top-0 w-[329px] bg-green-300 1600:flex h-screen flex-none border border-green-500 animate-slide-left pb-[90px]">
+        <div className="absolute z-[100] hidden right-0 top-0 w-[329px] bg-green-300 1600:flex h-screen flex-none border border-green-500 animate-slide-left pb-[90px]">
           <SidebarRight />
         </div>
       </div>
