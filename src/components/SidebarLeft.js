@@ -21,16 +21,21 @@ const SidebarLeft = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="flex relative h-full flex-col bg-[hsla(0,0%,100%,0.3)] w-[240px]">
+    <div className="flex relative h-full flex-col bg-[hsla(0,0%,100%,0.3)] 1228:w-[240px]">
       <div className="pb-4 relative after:w-[100% - 50px] after:left-[25px] after:right-[25px]  after:bg-[#000]/10 after:h-[1px] after:absolute after:bottom-0">
         <div
           onClick={() => navigate(path.HOME)}
-          className="w-full h-[70px] py-[15px] pr-[25px] pl-[27px] flex justify-start items-center cursor-pointer"
+          className="w-[70px] 1228:w-full h-[70px] 1228:py-[15px] 1228:pr-[25px] 1228:pl-[27px] flex justify-center 1228:justify-start items-center cursor-pointer"
         >
           <img
             src={logo}
             alt="logo"
-            className="w-[120px] h-10 block mb-[3px] object-contain"
+            className="hidden 1228:block w-[120px] h-10 mb-[3px] object-contain"
+          />
+          <img
+            src="	https://zjs.zmdcdn.me/zmp3-desktop/releases/v1.10.31/static/media/icon_zing_mp3_60.f6b51045.svg"
+            className="block 1228:hidden w-[45px] h-[45px] mb-[3px] object-contain"
+            alt="logo"
           />
         </div>
         <nav className="inter-font">
@@ -45,7 +50,7 @@ const SidebarLeft = () => {
           ))}
         </nav>
       </div>
-      <div className="grow overflow-y-scroll mb-[54px] scroll-container relative  after:w-[100% - 50px] after:left-[25px] after:right-[25px]">
+      <div className="grow overflow-y-scroll  1228:mb-[54px] scroll-container relative  after:w-[100% - 50px] after:left-[25px] after:right-[25px]">
         <div className="sticky top-0 left-[10px] right-[10px] w-[100% - 20px] h-[20px] bg-gradient-to-b from-[#dde4e4] from-10% via-[#dde4e4]/90 via-60% to-transparent to-100%"></div>
         <div className="mt-[-5px]">
           <nav className="inter-font mb-4">
@@ -59,7 +64,7 @@ const SidebarLeft = () => {
               />
             ))}
           </nav>
-          <div className="flex flex-col items-center ml-5 mr-[15px] mb-[15px] bg-linear-add px-2 py-[15px] rounded-lg inter-font font-semibold">
+          <div className="hidden 1228:flex flex-col items-center ml-5 mr-[15px] mb-[15px] bg-linear-add px-2 py-[15px] rounded-lg inter-font font-semibold">
             <span className="text-white text-center block text-xs mb-2.5 leading-[1.67]">
               Nghe nhạc không quảng cáo cùng kho nhạc PREMIUM
             </span>
@@ -81,7 +86,7 @@ const SidebarLeft = () => {
               />
             ))}
           </nav>
-          <nav className="inter-font my-4">
+          <nav className="hidden 1228: inter-font my-4">
             {clientCreateSidebarMenu.map((item, index) => (
               <NavLink
                 end={item.end}
@@ -95,7 +100,7 @@ const SidebarLeft = () => {
           </nav>
         </div>
       </div>
-      <div className="absolute flex items-center justify-start border-t w-full border-neutral-400 px-6 h-[54px] bottom-0 left-0">
+      <div className=" absolute hidden 1228:flex items-center justify-start border-t w-full border-neutral-400 px-6 h-[54px] bottom-0 left-0">
         <IconAddPlus size={24} />
         <button className="ml-3 block font-semibold text-primary/90 hover:text-secondary text-[14.5px]">
           Tạo playlist mới

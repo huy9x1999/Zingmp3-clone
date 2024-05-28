@@ -5,6 +5,7 @@ import * as action from "../store/actions";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useNavigate } from "react-router-dom";
+import SwiperCore, { Navigation } from "swiper";
 
 // Import Swiper styles
 import "swiper/css";
@@ -19,37 +20,37 @@ const SliderBanner = ({ data }) => {
 
   const handlePrev = useCallback(() => {
     if (!sliderRef.current) return;
-    sliderRef.current.swiper.slidePrev();
+    sliderRef.current.slidePrev();
   }, []);
 
   const handleNext = useCallback(() => {
     if (!sliderRef.current) return;
-    sliderRef.current.swiper.slideNext();
+    sliderRef.current.slideNext();
   }, []);
 
   const handleClick = (item) => {
     if (item?.type === 1) {
+      dispatch(action.changeIsPlaying(true));
       dispatch(action.setCurSongId(item.encodeId));
-      dispatch(action.playAlbum(false))
+      dispatch(action.playAlbum(false));
     } else if (item?.type === 3 || item?.type === 4) {
-      const albumPath = item?.link.split('.')[0];
+      const albumPath = item?.link.split(".")[0];
       navigate(albumPath);
-      dispatch(action.playAlbum(true))
-    }else{
-      dispatch(action.playAlbum(false))
+      dispatch(action.playAlbum(true));
+    } else {
+      dispatch(action.playAlbum(false));
     }
   };
 
   return (
     <Section className="z-10 flex flex-col w-full relative">
       <Swiper
-        ref={sliderRef}
         className="w-full"
         spaceBetween={30}
         loop
-        slidesPerView={items.length > 3 ? 3 : items.length}
-        allowSlidePrev={items.length > 3}
-        allowSlideNext={items.length > 3}
+        slidesPerView={2}
+        allowSlidePrev={true}
+        allowSlideNext={true}
         allowTouchMove={false}
         navigation={{
           nextEl: ".swiper-button-next",
@@ -62,7 +63,14 @@ const SliderBanner = ({ data }) => {
         }}
         speed={800}
         onSlideChange={() => {}}
-        onSwiper={(swiper) => {}}
+        onSwiper={(swiper) => {
+          sliderRef.current = swiper;
+        }}
+        breakpoints={{
+          1024: {
+            slidesPerView: 3
+          }
+        }}
       >
         {items.map((item) => (
           <SwiperSlide key={item.encodeId}>
@@ -83,17 +91,13 @@ const SliderBanner = ({ data }) => {
       </Swiper>
 
       <button
-        className={`absolute flex justify-center items-center left-[32px] z-20 top-[50%] color-white w-[55px] h-[55px] translate-y-[-50%] bg-[#FFFFFF26] rounded-full shadow-btn-allowSlide swiper-button-prev sm:${
-          items.length > 2 ? "block" : "hidden"
-        } ${items.length > 3 ? "block" : " hidden"}`}
+        className={`absolute flex justify-center items-center left-[32px] z-20 top-[50%] color-white w-[55px] h-[55px] translate-y-[-50%] bg-[#FFFFFF26] rounded-full shadow-btn-allowSlide swiper-button-prev`}
         onClick={handlePrev}
       >
         <MdOutlineArrowBackIos size={24} color="white" className="mr-1" />
       </button>
       <button
-        className={`absolute flex justify-center items-center right-[32px] z-20 top-[50%] color-white w-[55px] h-[55px] translate-y-[-50%] bg-[#FFFFFF26] rounded-full shadow-btn-allowSlide swiper-button-prev sm:${
-          items.length > 2 ? "block" : "hidden"
-        } ${items.length > 3 ? "block" : " hidden"}`}
+        className={`absolute flex justify-center items-center right-[32px] z-20 top-[50%] color-white w-[55px] h-[55px] translate-y-[-50%] bg-[#FFFFFF26] rounded-full shadow-btn-allowSlide swiper-button-prev`}
         onClick={handleNext}
       >
         <MdOutlineArrowForwardIos size={24} color="white" className="ml-1" />

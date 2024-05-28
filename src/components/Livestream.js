@@ -32,18 +32,18 @@ const Livestream = ({ data }) => {
   }, []);
 
   const handleClick = (item) => {
-    console.log(item.encodeId);
     dispatch(action.setCurSongId(item.encodeId));
   };
   return (
     <Section className="mt-12 w-[calc(100% + 32px)] -mx-4 relative">
       <TitleSection className="px-4 mb-5">{title}</TitleSection>
-      <div className="w-full px-4 ">
+      <div className="w-full px-4">
         <Swiper
+          key={data.encodeId}
           ref={sliderRef}
           className="w-full"
           spaceBetween={30}
-          slidesPerView={6}
+          slidesPerView={3}
           loop={false}
           allowSlidePrev={true}
           allowSlideNext={true}
@@ -66,61 +66,79 @@ const Livestream = ({ data }) => {
             setStatusNextBtn(swiper.isEnd);
             setStatusPerBtn(swiper.isBeginning);
           }}
+          breakpoints={{
+            900: {
+              slidesPerView: 4
+            },
+            1024: {
+              slidesPerView: 4
+            },
+            1228: {
+              slidesPerView: 5
+            },
+            1440: {
+              slidesPerView: 6
+            }
+          }}
         >
           {items.map((item) => (
-            <SwiperSlide key={item.encodeId}>
-              <div>
-                <div className="relative group">
-                  <div className="overflow-hidden rounded-full">
-                    <img
-                      className="w-full object-cover group-hover:scale-110 transition-transform duration-500 ease-in-out"
-                      alt=""
-                      src={item.program.thumbnail}
-                    />
-                  </div>
-                  <div className="border-[3px] border-transparent absolute w-full text-white h-full left-0 top-0 rounded-full hidden bg-transparent group-hover:bg-black/50 group-hover:flex items-center justify-center">
-                    <div
-                      onClick={() => {
-                        handleClick(item);
-                      }}
-                      className="relative z-5 w-[45px] h-[45px] flex items-center justify-center border cursor-pointer border-white rounded-full"
-                    >
-                      <TbPlayerPlayFilled size={24} className="ml-0.5" />
+            <>
+              {item.program && (
+                <SwiperSlide key={item.encodeId}>
+                  <div>
+                    <div className="relative group">
+                      <div className="overflow-hidden rounded-full">
+                        <img
+                          className="w-full object-cover group-hover:scale-110 transition-transform duration-500 ease-in-out"
+                          alt=""
+                          src={item.program.thumbnail}
+                        />
+                      </div>
+                      <div className="border-[3px] border-transparent absolute w-full text-white h-full left-0 top-0 rounded-full hidden bg-transparent group-hover:bg-black/50 group-hover:flex items-center justify-center">
+                        <div
+                          onClick={() => {
+                            handleClick(item);
+                          }}
+                          className="relative z-5 w-[45px] h-[45px] flex items-center justify-center border cursor-pointer border-white rounded-full"
+                        >
+                          <TbPlayerPlayFilled size={24} className="ml-0.5" />
+                        </div>
+                      </div>
+                      <div className="absolute w-full h-full left-0 top-0 -rotate-90">
+                        <IconBorderRadio
+                          strokeDashoffset={getPercentRadioTime(
+                            item?.program?.hasSongRequest,
+                            item.program.startTime,
+                            item.program.endTime
+                          )}
+                        />
+                      </div>
+                      <div className="w-[36%] h-auto overflow-hidden rounded-full absolute top-[85.3%] left-[85.3%] -translate-x-[60%] -translate-y-[60%]">
+                        <img
+                          className="w-full object-cover"
+                          src={item.host.thumbnail}
+                          alt=""
+                        />
+                      </div>
+                      <div className="absolute w-1/4 left-1/2 bottom-0 -translate-x-1/2 translate-y-1/2">
+                        <img
+                          src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/icons/live-tag.svg"
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                    <div className="mt-5 text-center inter-font">
+                      <h3 className="text-[16px] font-semibold text-primary">
+                        {item.host.name}
+                      </h3>
+                      <p className="text-[12px] font-normal text-tx-gray leading-[1.33]">
+                        {item.activeUsers} đang nghe
+                      </p>
                     </div>
                   </div>
-                  <div className="absolute w-full h-full left-0 top-0 -rotate-90">
-                    <IconBorderRadio
-                      strokeDashoffset={getPercentRadioTime(
-                        item?.program?.hasSongRequest,
-                        item.program.startTime,
-                        item.program.endTime
-                      )}
-                    />
-                  </div>
-                  <div className="w-[36%] h-auto overflow-hidden rounded-full absolute top-[85.3%] left-[85.3%] -translate-x-[60%] -translate-y-[60%]">
-                    <img
-                      className="w-full object-cover"
-                      src={item.host.thumbnail}
-                      alt=""
-                    />
-                  </div>
-                  <div className="absolute w-1/4 left-1/2 bottom-0 -translate-x-1/2 translate-y-1/2">
-                    <img
-                      src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/icons/live-tag.svg"
-                      alt=""
-                    />
-                  </div>
-                </div>
-                <div className="mt-5 text-center inter-font">
-                  <h3 className="text-[16px] font-semibold text-primary">
-                    {item.host.name}
-                  </h3>
-                  <p className="text-[12px] font-normal text-tx-gray leading-[1.33]">
-                    {item.activeUsers} đang nghe
-                  </p>
-                </div>
-              </div>
-            </SwiperSlide>
+                </SwiperSlide>
+              )}
+            </>
           ))}
         </Swiper>
         <button

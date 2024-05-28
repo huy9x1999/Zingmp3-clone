@@ -15,3 +15,12 @@ export const addSongs = (songs) => ({
   songs
 });
 
+export const setCurSongData = (data) => ({
+  type: actionType.SET_CUR_SONG_DATA,
+  data
+});
+
+export const setCurAlbumId = (id) => ({
+  type: actionType.SET_CUR_ALBUM_ID,
+  id
+});

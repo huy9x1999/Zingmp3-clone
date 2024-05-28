@@ -1,10 +1,13 @@
-import { FiSearch } from "react-icons/fi";
-import { BsArrowRight, BsArrowLeft } from "react-icons/bs";
+import { FiSearch, FiMinus } from "react-icons/fi";
+import { BsArrowRight, BsArrowLeft, BsMusicNoteList } from "react-icons/bs";
 import { SlSettings } from "react-icons/sl";
 import { GoHeart } from "react-icons/go";
-import { PiDotsThreeBold } from "react-icons/pi";
 import { TbPlayerPlayFilled } from "react-icons/tb";
-import { HiPause } from "react-icons/hi2";
+import {
+  HiPause,
+  HiMiniSpeakerWave,
+  HiMiniSpeakerXMark
+} from "react-icons/hi2";
 import {
   IoPlayCircleOutline,
   IoPlaySkipBackSharp,
@@ -13,14 +16,19 @@ import {
 import {
   MdOutlineArrowBackIos,
   MdOutlineArrowForwardIos,
-  MdPersonAddAlt 
+  MdPersonAddAlt
 } from "react-icons/md";
 import {
   PiShuffleLight,
   PiRepeatLight,
   PiSortAscendingThin,
-  PiMusicNotesSimpleLight  
+  PiMusicNotesSimpleLight,
+  PiMonitorLight,
+  PiDotsThreeBold
 } from "react-icons/pi";
+import { GiMicrophone } from "react-icons/gi";
+import { ImBin } from "react-icons/im";
+import { FaCaretDown, FaCaretUp } from "react-icons/fa";
 
 const icons = {
   BsArrowRight,
@@ -40,7 +48,16 @@ const icons = {
   HiPause,
   PiSortAscendingThin,
   PiMusicNotesSimpleLight,
-  MdPersonAddAlt
+  MdPersonAddAlt,
+  GiMicrophone,
+  PiMonitorLight,
+  BsMusicNoteList,
+  HiMiniSpeakerWave,
+  HiMiniSpeakerXMark,
+  ImBin,
+  FaCaretDown,
+  FaCaretUp,
+  FiMinus
 };
 
 export default icons;

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Section from "./Section";
 import TitleSection from "./TitleSection";
 import { Link } from "react-router-dom";
@@ -6,8 +6,13 @@ import icons from "../utils/icons";
 import { chunkArray } from "../utils/fn";
 import SmallThumbPlayMusic from "./SmallThumbPlayMusic";
 import { IconPremium } from "../utils/customIcons";
+import { useWindowSize } from "@uidotdev/usehooks";
 
 const NewRelease = ({ data }) => {
+  const width = window.innerWidth;
+
+  const size = useWindowSize();
+
   const {
     items: { all, others, vPop },
     title,
@@ -34,7 +39,7 @@ const NewRelease = ({ data }) => {
             </div>
           </div>
           <div className="group-hover:w-7/12 flex flex-col flex-grow">
-            <span className="flex gap-2 items-center justify-start">
+            <span className="leading-[18px] flex gap-2 items-center justify-start">
               <Link to="/" className="text-overflow-1-line">
                 {item.title}
               </Link>
@@ -44,7 +49,7 @@ const NewRelease = ({ data }) => {
                 </span>
               )}
             </span>
-            <p className="group-hover:pr-0 pr-4 mt-[3px] text-[13px] leading-[18px] text-overflow-1-line text-tx-gray">
+            <p className="group-hover:pr-0 pr-4 mt-[2px] text-[12px] leading-[16px] text-overflow-1-line text-tx-gray">
               {item.artistsNames.split(",").map((text, index) => {
                 if (index === item.artistsNames.split(",").length - 1) {
                   return (
@@ -64,7 +69,7 @@ const NewRelease = ({ data }) => {
                 );
               })}
             </p>
-            <p className="mt-[3px] text-[13px] leading-[18px] text-overflow-1-line text-tx-gray">
+            <p className="mt-[2px] text-[12px] leading-[1.33] text-overflow-1-line text-tx-gray">
               Hôm nay
             </p>
           </div>
@@ -84,6 +89,7 @@ const NewRelease = ({ data }) => {
     <Section className="mt-12">
       <div className="flex items-end justify-between mb-4">
         <div>
+          <div>{width}</div>
           <TitleSection className="mb-5">{title}</TitleSection>
           <div className=" flex justify-start items-center gap-[15px]">
             <button
@@ -117,44 +123,26 @@ const NewRelease = ({ data }) => {
           <MdOutlineArrowForwardIos size={12} className="ml-2 -mt-0.5" />
         </Link>
       </div>
-      <div className="grid grid-cols-3 gap-7">
+      <div className="grid grid-cols-2 1228:grid-cols-3 gap-x-7">
         {active === 0 && (
           <>
-            {chunkArray(all, 4)
-              .map((item, index) => (
-                <nav key={index} className="flex list-none flex-col ">
-                  {item.map((item) => (
-                    <Item item={item} key={item.encodeId} />
-                  ))}
-                </nav>
-              ))
-              .slice(0, 3)}
+            {all
+              ?.map((item) => <Item item={item} key={item.encodeId} />)
+              .slice(0, size.width >= 1228 ? 12 : 8)}
           </>
         )}
         {active === 1 && (
           <>
-            {chunkArray(vPop, 4)
-              .map((item, index) => (
-                <nav key={index} className="flex list-none flex-col ">
-                  {item.map((item) => (
-                    <Item item={item} key={item.encodeId} />
-                  ))}
-                </nav>
-              ))
-              .slice(0, 3)}
+            {vPop
+              ?.map((item) => <Item item={item} key={item.encodeId} />)
+              .slice(0, size.width >= 1228 ? 12 : 8)}
           </>
         )}
         {active === 2 && (
           <>
-            {chunkArray(others, 4)
-              .map((item, index) => (
-                <nav key={index} className="flex list-none flex-col ">
-                  {item.map((item) => (
-                    <Item item={item} key={item.encodeId} />
-                  ))}
-                </nav>
-              ))
-              .slice(0, 3)}
+            {others
+              ?.map((item) => <Item item={item} key={item.encodeId} />)
+              .slice(0, size.width >= 1228 ? 12 : 8)}
           </>
         )}
       </div>

@@ -29,7 +29,6 @@ const Album = () => {
   useEffect(() => {
     dispatch(action.fetchDetailPlayList(pid));
   }, [pid]);
-  console.log(playList?.textType);
 
   return (
     <div className="pt-2 pb-12">
@@ -37,14 +36,10 @@ const Album = () => {
         <div className="w-[300px] sticky top-[100px] left-0 float-left mb-[30px]">
           <div className="w-full pb-[30px]">
             <div className="relative rounded-lg shadow-[0_5px_8px_0_rgba(0,0,0,.2)] overflow-hidden group">
-              <img
-                src={playList?.thumbnailM}
-                alt=""
-                className="w-full object-cover  group-hover:scale-110 transition-transform duration-500 ease-in-out"
-              />
               <PlayMusic
+                item={playList}
                 key={playList?.song.items[0].encodeId}
-                isPlay={true}
+                isPlay
                 isHideShowMenu={true}
                 encodeId={playList?.song.items[0].encodeId}
                 className="hidden group-hover:flex"
@@ -127,6 +122,7 @@ const Album = () => {
               isShuffle={playList?.isShuffle}
               item={item}
               key={item.encodeId}
+              albumId={playList?.encodeId}
             />
           ))}
           <div className="mt-2.5">
@@ -190,24 +186,15 @@ const Album = () => {
                 key={item.encodeId}
                 className="w-full flex flex-col items-center"
               >
-                <div className="relative rounded-full overflow-hidden text-center group">
-                  <img
-                    src={item.thumbnailM}
-                    alt=""
-                    className="group-hover:scale-125 transition-transform duration-500 ease-in-out"
-                  />
-                  <PlayMusic
-                    key={item.id}
-                    isHideShowMenu={true}
-                    className="hidden group-hover:flex"
-                  />
+                <div className="relative rounded-full overflow-hidden text-center">
+                  <PlayMusic item={item} key={item.id} isHideShowMenu={true} />
                 </div>
                 <span className="capitalize font-medium leading-[1.33] mt-[15px] mb-1 text-center text-[14px] text-primary text-overflow-1-line">
                   {item.name}
                 </span>
                 <div className="text-[12px] text-tx-gray">
                   <span className="uppercase mr-0.5">
-                    {converNumber(600000)}
+                    {converNumber(item.totalFollow)}
                   </span>
                   <span>quan tâm</span>
                 </div>

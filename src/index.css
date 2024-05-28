@@ -20,6 +20,22 @@ body {
 .main-text-stock {
   -webkit-text-stroke: 1px #6b3483;
 }
+
+.text-stock {
+  -webkit-text-stroke: 1.5px #32323d9d;
+}
+
+.text-stock-1 {
+  -webkit-text-stroke: 1.5px #4a90e2;
+}
+
+.text-stock-2 {
+  -webkit-text-stroke: 1.5px #3efad9;
+}
+
+.text-stock-3 {
+  -webkit-text-stroke: 1px #e35050;
+}
 /* custom scrollbar*/
 
 .scroll-container::-webkit-scrollbar {
@@ -85,4 +101,41 @@ body {
   align-items: center;
   flex: 1 1;
   text-transform: none;
+}
+
+input[type="range"].volume::-moz-range-thumb {
+  -webkit-appearance: none;
+  opacity: 0;
+}
+
+input[type="range"].volume::-ms-thumb {
+  -webkit-appearance: none;
+  opacity: 0;
+}
+
+input[type="range"].volume::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  opacity: 0;
+}
+
+input[type="range"].volume:hover::-webkit-slider-thumb {
+  opacity: 100;
+}
+
+input[type="range"].volume::-webkit-slider-runnable-track {
+  -webkit-appearance: none;
+  box-shadow: none;
+  border: none;
+  background: transparent;
+}
+
+.text-radial-gradint-zingmp3 {
+  background: radial-gradient(
+      50% 124.93% at 95.86% -10%,
+      #3efad9 0,
+      hsla(0, 0%, 100%, 0) 100%
+    ),
+    linear-gradient(91.56deg, #ff9357 1.54%, #9100ff 98.71%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }

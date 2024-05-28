@@ -1,3 +1,5 @@
+
+
 export const getArrSlider = (start, end, number) => {
   const limit = start > end ? number : end;
 
@@ -95,4 +97,41 @@ export const converNumber = (numebr) => {
   }
 
   return numebr;
+};
+
+export const chartColor = (i) => {
+  switch (i) {
+    case 0:
+      return "#4a90e2";
+    case 1:
+      return "#50e3c2";
+    case 2:
+      return "#e35050";
+    default:
+      return "#4a90e2";
+  }
+};
+
+export const rankStatus = (number) => {
+  if (number < 0) {
+    return {
+      number: -number,
+      color: "#e35050",
+      icon: 'down'
+    };
+  }
+
+  if (number > 0) {
+    return {
+      number: number,
+      color: "#1dc186",
+      icon: 'up'
+    };
+  }
+
+  return {
+    number: number,
+    color: "#696969",
+    icon: 'none'
+  };
 };

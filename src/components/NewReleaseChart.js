@@ -1,13 +1,14 @@
-import React, { useCallback, useRef } from "react";
+import React, { useCallback, useRef, useState } from "react";
 import Section from "./Section";
 import TitleSection from "./TitleSection";
 import { Link } from "react-router-dom";
 import icons from "../utils/icons";
 import { Swiper, SwiperSlide } from "swiper/react";
+import PlayMusic from "./PlayMusic";
 
 const NewReleaseChart = ({ data }) => {
   const { items, link } = data;
-  const { MdOutlineArrowForwardIos, TbPlayerPlayFilled, MdOutlineArrowBackIos } = icons;
+  const { MdOutlineArrowForwardIos, MdOutlineArrowBackIos } = icons;
 
   const sliderRef = useRef(null);
 
@@ -37,7 +38,7 @@ const NewReleaseChart = ({ data }) => {
           className="w-full"
           spaceBetween={28}
           loop
-          slidesPerView={3}
+          slidesPerView={2}
           allowSlidePrev
           allowSlideNext
           allowTouchMove={true}
@@ -53,23 +54,25 @@ const NewReleaseChart = ({ data }) => {
           speed={800}
           onSlideChange={() => {}}
           onSwiper={(swiper) => {}}
+          breakpoints={{
+            1228: {
+              slidesPerView: 3
+            }
+          }}
         >
           {items.map((item, index) => (
             <SwiperSlide key={item.encodeId}>
               <div key={item.encodeId}>
                 <div className="flex p-[5px] rounded shadow-btn-newLeaseChart bg-white/30 text-primary cursor-pointer">
                   <div className="flex items-center text-left rounded-[5px] p-2.5 gap-2.5">
-                    <div className="flex-grow-0 flex-shrink-0 relative overflow-hidden rounded-[5px] group w-[120px] h-[120px]">
-                      <img
-                        src={item.thumbnailM}
-                        alt=""
-                        className="object-cover block w-full group-hover:scale-110 transition-transform duration-500 ease-in-out"
+                    <div className="flex-grow-0 flex-shrink-0 relative overflow-hidden rounded-[5px] w-[120px] h-[120px]">
+                      <PlayMusic
+                        isHideShowMenu
+                        encodeId={item?.encodeId}
+                        isPlay
+                        isSong
+                        item={item}
                       />
-                      <div className="hidden group-hover:flex text-white absolute top-0 left-0 w-full h-full z-5 bg-black/40 items-center justify-around">
-                        <div className="w-[45px] h-[45px] flex items-center justify-center border cursor-pointer border-white rounded-full">
-                          <TbPlayerPlayFilled size={24} className="ml-0.5" />
-                        </div>
-                      </div>
                     </div>
                     <div className="flex-grow  flex flex-col justify-between items-start h-full">
                       <div>

@@ -1,12 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-const NavLinkSidebar = ({
-  item,
-  activeStyle,
-  notActiveStyle,
-  isCheck
-}) => {
+const NavLinkSidebar = ({ item, activeStyle, notActiveStyle, isCheck }) => {
   return (
     <NavLink
       end={item.end}
@@ -16,7 +11,7 @@ const NavLinkSidebar = ({
       }
     >
       {item.icon}
-      <span>{item.text}</span>
+      <span className="hidden 1228:inline-block">{item.text}</span>
     </NavLink>
   );
 };

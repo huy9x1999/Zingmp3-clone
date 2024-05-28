@@ -1,7 +1,9 @@
 import actionType from "../actions/actionTypes";
 
 const initState = {
-  homeData: [],
+  homeData: null,
+  top100Data: null,
+  newReleaseChartData: null,
   isPlaying: false
 };
 
@@ -12,13 +14,23 @@ const appReducer = (state = initState, action) => {
         ...state,
         homeData: action.homeData
       };
-    case actionType.CHANGE_ISPLAING:{
+    case actionType.GET_TOP_100:
+      return {
+        ...state,
+        top100Data: action.top100Data
+      };
+    case actionType.GET_NEWRELEASE_CHART:
+      return {
+        ...state,
+        newReleaseChartData: action.newReleaseChartData
+      };
+    case actionType.CHANGE_ISPLAING: {
       return {
         ...state,
         isPlaying: action.isPlaying
       };
     }
-      
+
     default:
       return state;
   }

@@ -40,7 +40,8 @@ const Header = () => {
         <button className="rounded-full w-10 h-10 bg-[hsla(0,0%,100%,0.3)] flex items-center justify-center mr-2.5">
           <SlSettings size={18} />
         </button>
-        <button className="rounded-full w-10 h-10 bg-green-700">
+        <button className="rounded-full w-10 h-10 overflow-hidden">
+          <img className="w-full h-full object-cover" src="https://zjs.zmdcdn.me/zmp3-desktop/releases/v1.10.31/static/media/user-default.3ff115bb.png" alt="" />
         </button>
       </div>
     </div>

@@ -1,4 +1,12 @@
-import { Home, Login, Personal, Public, Album } from "./containers/public/";
+import {
+  Home,
+  Login,
+  Personal,
+  Public,
+  Album,
+  Top100,
+  NewReleasePage
+} from "./containers/public/";
 import { Routes, Route } from "react-router-dom";
 import path from "./utils/path";
 import * as actions from "./store/actions";
@@ -21,6 +29,8 @@ function App() {
           <Route path={path.MYMUSIC} element={<Personal />} />
           <Route path={path.ALBUM_TITLE_PID} element={<Album />} />
           <Route path={path.PLAYLIST_TITLE_PID} element={<Album />} />
+          <Route path={path.TOP_100} element={<Top100 />} />
+          <Route path={path.NEW_RELEASECHART} element={<NewReleasePage />} />
           <Route path={path.STAR} element={<Home />} />
         </Route>
       </Routes>

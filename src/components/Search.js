@@ -4,7 +4,7 @@ import icons from "../utils/icons";
 const Search = () => {
   const { FiSearch } = icons;
   return (
-    <div className="flex items-center ml-5 bg-[#DDE4E4]  rounded-[20px]">
+    <div className="max-w-[440px] flex items-center ml-5 bg-[#DDE4E4]  rounded-[20px]">
       <span className="h-10 pl-2 flex items-center justify-center text-gray-500"><FiSearch size={20} /></span>
       
       <input

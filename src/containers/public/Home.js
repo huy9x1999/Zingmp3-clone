@@ -1,25 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import Section from "../../components/Section";
-import { Link, NavLink } from "react-router-dom";
 import SliderBanner from "../../components/Slider";
-import icons from "../../utils/icons";
-import PlayMusic from "../../components/PlayMusic";
-import TitleSection from "../../components/TitleSection";
 import NewRelease from "../../components/NewRelease";
-import PlayList from "../../components/PlayList";
 import NewReleaseChart from "../../components/NewReleaseChart";
 import WeakChart from "../../components/WeakChart";
 import arrayUtitl from "../../utils/arrayUtil";
 import RecentPlaylist from "../../components/RecentPlaylist";
 import Livestream from "../../components/Livestream";
+import { ChartSection } from "../../components";
+import PlayListSlice from "../../components/PlaylistSlice";
 
 const Home = () => {
   const { listImgConnect } = arrayUtitl;
   const { homeData } = useSelector((state) => state.app);
 
   const ListSectionHome = () => {
-    return homeData.map((item, index) => {
+    return homeData?.map((item, index) => {
       const { items } = item;
       switch (item.sectionType) {
         case "banner":
@@ -33,16 +30,19 @@ const Home = () => {
             items?.length > 0 && <RecentPlaylist key={index} data={item} />
           );
         case "playlist":
-          return items?.length > 0 && <PlayList key={index} data={item} />;
+          return items?.length > 0 && <PlayListSlice key={index} data={item} />;
         case "new-release":
           return <NewRelease key={index} data={item} />;
         case "newReleaseChart":
           return <NewReleaseChart key={index} data={item} />;
+        case "RTChart":
+          return <ChartSection key={index} item={item} />;
         case "weekChart":
           return <WeakChart key={index} data={item} />;
         case "livestream":
           return <Livestream key={index} data={item} />;
         default:
+          <></>;
           break;
       }
     });

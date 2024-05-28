@@ -25,12 +25,7 @@ const RecentPlaylist = (data) => {
         {items.map((item) => (
           <div className="mx-3">
             <div className="rounded overflow-hidden relative group cursor-pointer">
-              <img
-                className="w-full block group-hover:scale-125 transition-transform duration-500 ease-in-out"
-                src="https://photo-playlist-zmp3.zmdcdn.me/s2/mixtape?src=HavwqN7EYmrDGr6VBegSG044GDyvm8z0MGH0ts6ErmvTKHkCCuk13mi67jjgtzHJ00r9rphUXb9GK1dG9z771rmMIzjiauuqHn57x6hOqtvGN0khUyIAA0qM2wjjoPCk3HG4h3NBd2nU5Gh-Cyl5TrD6MlCucP4YKaS8pJgVaazNHW_DF9wF5nKI0ujkZSX3GqHSqKnEICHxXR2oagY_R6SYVG&cv=1&size=thumb/240_240"
-                alt=""
-              />
-              <PlayMusic className="hidden group-hover:flex" />
+              <PlayMusic item={item} />
             </div>
             <Link to="/">
               <span className="inter-font text-overflow-2-line mt-3 text-[14px] leading-[1.36] text-primary font-bold capitalize pr-1">
