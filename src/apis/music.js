@@ -7,8 +7,8 @@ export const apiGetSong = (songId) =>
         url: "/song",
         method: "get",
         params: {
-          id: songId
-        }
+          id: songId,
+        },
       });
 
       resolve(response);
@@ -24,8 +24,8 @@ export const apiGetDetailSong = (songId) =>
         url: "/infosong",
         method: "get",
         params: {
-          id: songId
-        }
+          id: songId,
+        },
       });
 
       resolve(response);
@@ -41,8 +41,8 @@ export const apiGetDetailPlaylist = (playlistId) =>
         url: "/detailplaylist",
         method: "get",
         params: {
-          id: playlistId
-        }
+          id: playlistId,
+        },
       });
 
       resolve(response);
@@ -56,7 +56,7 @@ export const apiGetTop100 = () =>
     try {
       const response = await axios({
         url: "/top100",
-        method: "get"
+        method: "get",
       });
 
       resolve(response);
@@ -65,16 +65,32 @@ export const apiGetTop100 = () =>
     }
   });
 
-  export const apiNewReleaseChart = () =>
-    new Promise(async (resolve, reject) => {
-      try {
-        const response = await axios({
-          url: "/newReleaseChart",
-          method: "get"
-        });
-  
-        resolve(response);
-      } catch (error) {
-        reject(error);
-      }
-    });
+export const apiNewReleaseChart = () =>
+  new Promise(async (resolve, reject) => {
+    try {
+      const response = await axios({
+        url: "/newReleaseChart",
+        method: "get",
+      });
+
+      resolve(response);
+    } catch (error) {
+      reject(error);
+    }
+  });
+
+export const apiSearch = (keyword) =>
+  new Promise(async (resolve, reject) => {
+    try {
+      const response = await axios({
+        url: "/search",
+        method: "get",
+        params: {
+          keyword: keyword,
+        },
+      });
+      resolve(response);
+    } catch (error) {
+      reject(error);
+    }
+  });

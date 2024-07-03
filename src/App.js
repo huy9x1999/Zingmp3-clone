@@ -12,6 +12,7 @@ import path from "./utils/path";
 import * as actions from "./store/actions";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
+import Search from "./containers/public/Search";
 
 function App() {
   const dispatch = useDispatch();
@@ -32,6 +33,7 @@ function App() {
           <Route path={path.TOP_100} element={<Top100 />} />
           <Route path={path.NEW_RELEASECHART} element={<NewReleasePage />} />
           <Route path={path.STAR} element={<Home />} />
+          {/* <Route path={path.SEARCH} element={<Search />} /> */}
         </Route>
       </Routes>
     </div>
