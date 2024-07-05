@@ -41,6 +41,7 @@ const Player = ({ setIsShowSlidebar, isShowRightSlidebar }) => {
 
   useEffect(() => {
     setIsLoading(true);
+    dispatch(action.getErrMessage('',false))
     const fetchDetailSong = async () => {
       const [res1, res2] = await Promise.all([
         apis.apiGetDetailSong(curSongId),
@@ -59,6 +60,7 @@ const Player = ({ setIsShowSlidebar, isShowRightSlidebar }) => {
           setIsLoading(false);
           setisFail(false);
         } else {
+          dispatch(action.getErrMessage('Play music: '+res2.data.msg,true))
           setisFail(true);
           setIsLoading(false);
           audio.pause();
@@ -140,7 +142,7 @@ const Player = ({ setIsShowSlidebar, isShowRightSlidebar }) => {
         {isLoading ? (
           <div className="animate-pulse flex">
             <div className="flex-shrink-0 w-16 h-16 bg-gray-400 rounded-lg dark:bg-gray-900"></div>
-            <div className="ml-4 flex-auto flex-grow flex-shrink ">
+            <div className="ml-4 mt-2 flex-auto flex-grow flex-shrink ">
               <p className="w-36 h-4 bg-gray-400 rounded dark:bg-gray-900 mb-4"></p>
               <p className="w-28 h-3 bg-gray-400 rounded dark:bg-gray-900"></p>
             </div>

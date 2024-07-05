@@ -4,6 +4,8 @@ const initState = {
   homeData: null,
   top100Data: null,
   newReleaseChartData: null,
+  isLoadNewRelease:false,
+  isLoadTop100:false,
   isPlaying: false,
   isLoadHome:false
 };
@@ -30,10 +32,22 @@ const appReducer = (state = initState, action) => {
         ...state,
         newReleaseChartData: action.newReleaseChartData
       };
-    case actionType.CHANGE_ISPLAING: {
+    case actionType.CHANGE_ISPLAYING: {
       return {
         ...state,
         isPlaying: action.isPlaying
+      };
+    }
+    case actionType.CHANGE_LOAD_NEWRELEASE: {
+      return {
+        ...state,
+        isLoadNewRelease: action.isLoad
+      };
+    }
+    case actionType.CHANGE_LOAD_TOP100: {
+      return {
+        ...state,
+        isLoadTop100: action.isLoad
       };
     }
 

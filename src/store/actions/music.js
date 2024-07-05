@@ -26,6 +26,16 @@ export const setCurAlbumId = (id) => ({
   id
 });
 
+export const getErrMessage = (message,type) =>{console.log(type,message); return ({
+  type: actionType.GET_ERR_MESSAGE,
+  err:{
+    msg:message,
+    type:type,
+  }
+})} ;
+
+
+
 // export const search = (keyword)=>async (dispatch)=>{
 //   try {
 //     const response = await apis.apiSearch(keyword);

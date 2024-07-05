@@ -123,10 +123,6 @@ const Album = () => {
                   </div>
                 </div>
               ))}
-
-              {/* <p className="mt-4 h-5 w-[75%] bg-gray-400 rounded dark:bg-gray-900"></p>
-              <p className="mt-3 h-3 w-[60%] bg-gray-400 rounded dark:bg-gray-900"></p>
-              <p className="mt-3 h-3 w-[60%] bg-gray-400 rounded dark:bg-gray-900"></p> */}
             </div>
           ) : (
             <>
