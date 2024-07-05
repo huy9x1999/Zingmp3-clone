@@ -1,5 +1,5 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Section from "../../components/Section";
 import SliderBanner from "../../components/Slider";
 import NewRelease from "../../components/NewRelease";
@@ -10,17 +10,24 @@ import RecentPlaylist from "../../components/RecentPlaylist";
 import Livestream from "../../components/Livestream";
 import { ChartSection } from "../../components";
 import PlayListSlice from "../../components/PlaylistSlice";
+import * as actions from "../../store/actions";
 
 const Home = () => {
   const { listImgConnect } = arrayUtitl;
-  const { homeData } = useSelector((state) => state.app);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(actions.getHome());
+  }, []);
+
+  const { homeData, isLoadHome } = useSelector((state) => state.app);
 
   const ListSectionHome = () => {
     return homeData?.map((item, index) => {
       const { items } = item;
       switch (item.sectionType) {
         case "banner":
-          return items?.length > 0 && <SliderBanner key={index} data={item} />;
+          return <SliderBanner key={index} data={item} />;
         case "recent":
           return (
             items?.length > 0 && <RecentPlaylist key={index} data={item} />
@@ -49,23 +56,118 @@ const Home = () => {
   };
   return (
     <div className="w-full h-full">
-      <ListSectionHome />
-      <Section className="mt-10 px-[38px]">
-        <h3 className="uppercase mb-6 text-[12px] text-[#696969] hover:text-secondary text-center font-semibold tracking-widest">
-          <span className=" cursor-pointer text-[#696969] hover:text-secondary">
-            Đối tác âm nhạc
-          </span>
-        </h3>
-        <div className="grid grid-cols-8 grid-rows-2 items-stretch justify-center gap-x-5">
-          {listImgConnect.map((item, index) => (
-            <div key={index}>
-              <figure className="bg-white rounded-lg flex items-center justify-center h-[57%]">
-                <img className="max-w-[90%] max-h-[80%]" src={item} alt="" />
-              </figure>
+      {isLoadHome ? (
+        <div>
+          <Section className="px-[38px]">
+            <div role="status" class="flex gap-8 w-full animate-pulse">
+              <div className="h-[160px] bg-gray-400 rounded-lg dark:bg-gray-900 w-full mb-4"></div>
+              <div className="h-[160px] bg-gray-400 rounded-lg dark:bg-gray-900 w-full mb-4"></div>
+              <div className="hidden 1024:block h-[160px] bg-gray-400 rounded-lg dark:bg-gray-900 w-full mb-4"></div>
             </div>
-          ))}
+          </Section>
+          <Section className="mt-12 px-[38px] w-full animate-pulse">
+            <p className="h-[30px] mb-5 bg-gray-400 rounded dark:bg-gray-900 w-[400px]"></p>
+            <div className="grid grid-cols-2 1024:grid-cols-3 1228:grid-cols-4 gap-x-4">
+              <div>
+                <div className="pt-[100%] bg-gray-400 rounded dark:bg-gray-900 w-full"></div>
+                <p className="mt-4 w-full h-[20px] bg-gray-400 rounded dark:bg-gray-800"></p>
+                <p className="mt-2 h-4 w-2/3 bg-gray-400 rounded dark:bg-gray-800"></p>
+              </div>
+              <div>
+                <div className="pt-[100%] bg-gray-400 rounded dark:bg-gray-900 w-full"></div>
+                <p className="mt-4 w-full h-[20px] bg-gray-400 rounded dark:bg-gray-800"></p>
+                <p className="mt-2 h-4 w-2/3 bg-gray-400 rounded dark:bg-gray-800"></p>
+              </div>
+              <div>
+                <div className="pt-[100%] bg-gray-400 rounded dark:bg-gray-900 w-full"></div>
+                <p className="mt-4 w-full h-[20px] bg-gray-400 rounded dark:bg-gray-800"></p>
+                <p className="mt-2 h-4 w-2/3 bg-gray-400 rounded dark:bg-gray-800"></p>
+              </div>
+              <div>
+                <div className="pt-[100%] bg-gray-400 rounded dark:bg-gray-900 w-full"></div>
+                <p className="mt-4 w-full h-[20px] bg-gray-400 rounded dark:bg-gray-800"></p>
+                <p className="mt-2 h-4 w-2/3 bg-gray-400 rounded dark:bg-gray-800"></p>
+              </div>
+            </div>
+          </Section>
+          <Section className="mt-12 px-[38px] w-full animate-pulse">
+            <p className="h-[30px] mb-5 bg-gray-400 rounded dark:bg-gray-900 w-[400px]"></p>
+            <div className="grid grid-cols-2 1024:grid-cols-3 1228:grid-cols-4 gap-x-4">
+              <div>
+                <div className="pt-[100%] bg-gray-400 rounded dark:bg-gray-900 w-full"></div>
+                <p className="mt-4 w-full h-[20px] bg-gray-400 rounded dark:bg-gray-800"></p>
+                <p className="mt-2 h-4 w-2/3 bg-gray-400 rounded dark:bg-gray-800"></p>
+              </div>
+              <div>
+                <div className="pt-[100%] bg-gray-400 rounded dark:bg-gray-900 w-full"></div>
+                <p className="mt-4 w-full h-[20px] bg-gray-400 rounded dark:bg-gray-800"></p>
+                <p className="mt-2 h-4 w-2/3 bg-gray-400 rounded dark:bg-gray-800"></p>
+              </div>
+              <div>
+                <div className="pt-[100%] bg-gray-400 rounded dark:bg-gray-900 w-full"></div>
+                <p className="mt-4 w-full h-[20px] bg-gray-400 rounded dark:bg-gray-800"></p>
+                <p className="mt-2 h-4 w-2/3 bg-gray-400 rounded dark:bg-gray-800"></p>
+              </div>
+              <div>
+                <div className="pt-[100%] bg-gray-400 rounded dark:bg-gray-900 w-full"></div>
+                <p className="mt-4 w-full h-[20px] bg-gray-400 rounded dark:bg-gray-800"></p>
+                <p className="mt-2 h-4 w-2/3 bg-gray-400 rounded dark:bg-gray-800"></p>
+              </div>
+            </div>
+          </Section>
+          <Section className="mt-12 px-[38px] w-full animate-pulse pb-12">
+            <p className="h-[30px] mb-5 bg-gray-400 rounded dark:bg-gray-900 w-[400px]"></p>
+            <div className="grid grid-cols-2 1024:grid-cols-3 1228:grid-cols-4 gap-x-4">
+              <div>
+                <div className="pt-[100%] bg-gray-400 rounded dark:bg-gray-900 w-full"></div>
+                <p className="mt-4 w-full h-[20px] bg-gray-400 rounded dark:bg-gray-800"></p>
+                <p className="mt-2 h-4 w-2/3 bg-gray-400 rounded dark:bg-gray-800"></p>
+              </div>
+              <div>
+                <div className="pt-[100%] bg-gray-400 rounded dark:bg-gray-900 w-full"></div>
+                <p className="mt-4 w-full h-[20px] bg-gray-400 rounded dark:bg-gray-800"></p>
+                <p className="mt-2 h-4 w-2/3 bg-gray-400 rounded dark:bg-gray-800"></p>
+              </div>
+              <div>
+                <div className="pt-[100%] bg-gray-400 rounded dark:bg-gray-900 w-full"></div>
+                <p className="mt-4 w-full h-[20px] bg-gray-400 rounded dark:bg-gray-800"></p>
+                <p className="mt-2 h-4 w-2/3 bg-gray-400 rounded dark:bg-gray-800"></p>
+              </div>
+              <div>
+                <div className="pt-[100%] bg-gray-400 rounded dark:bg-gray-900 w-full"></div>
+                <p className="mt-4 w-full h-[20px] bg-gray-400 rounded dark:bg-gray-800"></p>
+                <p className="mt-2 h-4 w-2/3 bg-gray-400 rounded dark:bg-gray-800"></p>
+              </div>
+            </div>
+          </Section>
         </div>
-      </Section>
+      ) : (
+        <>
+          {" "}
+          <ListSectionHome />
+          <Section className="mt-10 px-[38px]">
+            <h3 className="uppercase mb-6 text-[12px] text-[#696969] hover:text-secondary text-center font-semibold tracking-widest">
+              <span className=" cursor-pointer text-[#696969] hover:text-secondary">
+                Đối tác âm nhạc
+              </span>
+            </h3>
+            <div className="grid grid-cols-8 grid-rows-2 items-stretch justify-center gap-x-5">
+              {listImgConnect.map((item, index) => (
+                <div key={index}>
+                  <figure className="bg-white rounded-lg flex items-center justify-center h-[57%]">
+                    <img
+                      className="max-w-[90%] max-h-[80%]"
+                      src={item}
+                      alt=""
+                    />
+                  </figure>
+                </div>
+              ))}
+            </div>
+          </Section>
+        </>
+      )}
+
       {/*
       <Section className="mt-12">
         <div className="mb-5">

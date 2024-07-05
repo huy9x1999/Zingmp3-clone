@@ -3,13 +3,11 @@ import Section from "./Section";
 import TitleSection from "./TitleSection";
 import { Link } from "react-router-dom";
 import icons from "../utils/icons";
-import { chunkArray } from "../utils/fn";
 import SmallThumbPlayMusic from "./SmallThumbPlayMusic";
 import { IconPremium } from "../utils/customIcons";
 import { useWindowSize } from "@uidotdev/usehooks";
 
 const NewRelease = ({ data }) => {
-  const width = window.innerWidth;
 
   const size = useWindowSize();
 
@@ -89,7 +87,6 @@ const NewRelease = ({ data }) => {
     <Section className="mt-12">
       <div className="flex items-end justify-between mb-4">
         <div>
-          <div>{width}</div>
           <TitleSection className="mb-5">{title}</TitleSection>
           <div className=" flex justify-start items-center gap-[15px]">
             <button

@@ -123,7 +123,7 @@ const ChartSection = ({ item }) => {
             <TbPlayerPlayFilled size={16} />
           </div>
         </div>
-        <div className="flex flex-col-reverse">
+        <div className="flex flex-col-reverse 1228:flex-row">
           <div className="w-full 1228:w-5/12 flex-shrink-0 flex-grow-0 1228:pr-[14px]">
             <div>
               {items &&
@@ -202,7 +202,7 @@ const ChartSection = ({ item }) => {
               </Link>
             </div>
           </div>
-          <div className="text-white w-full 1228:w-7/12 flex-shrink flex-grow 1228:pl-[14px] mb-4 relative h-[300px]">
+          <div className="text-white w-full 1228:w-7/12 1228:flex-shrink 1228:flex-grow 1228:pl-[14px] mb-4 relative h-[300px]">
             {data && (
               <Line
                 className="w-full"

@@ -1,7 +1,8 @@
 import actionType from "../actions/actionTypes";
 
 const initState = {
-  playList: null
+  playList: null,
+  isLoad:false
 };
 
 const playListReducer = (state = initState, action) => {
@@ -11,6 +12,11 @@ const playListReducer = (state = initState, action) => {
         ...state,
         playList: action.playList || null
       };
+    case actionType.CHANGE_LOAD_PLAYLIST:
+      return {
+        ...state,
+        isLoad:action.isLoad
+      }  
 
     default:
       return state;

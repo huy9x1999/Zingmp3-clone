@@ -3,6 +3,10 @@ import * as apis from "../../apis";
 
 export const getHome = () => async (dispatch) => {
   try {
+    dispatch({
+      type: actionType.CHANGE_LOAD_HOME,
+      load: true
+    });
     const response = await apis.getHome();
     if (response?.data.err === 0) {
       //handle when success
@@ -10,17 +14,29 @@ export const getHome = () => async (dispatch) => {
         type: actionType.GET_HOME,
         homeData: response.data.data.items
       });
+      dispatch({
+        type: actionType.CHANGE_LOAD_HOME,
+        load: false
+      });
     } else {
       //handle fail
       dispatch({
         type: actionType.GET_HOME,
         homeData: null
       });
+      dispatch({
+        type: actionType.CHANGE_LOAD_HOME,
+        load: false
+      });
     }
   } catch (error) {
     dispatch({
       type: actionType.GET_HOME,
       homeData: null
+    });
+    dispatch({
+      type: actionType.CHANGE_LOAD_HOME,
+      load: false
     });
   }
 };

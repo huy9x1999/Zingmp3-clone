@@ -54,7 +54,7 @@ const Public = () => {
           <div
             className={`absolute z-[100] right-0 top-0 w-[329px] bg-body 1600:flex h-screen flex-none animate-slide-left pb-[90px] shadow-sidebar-right`}
           >
-            <SidebarRight />
+            <SidebarRight handleChangeSliderbarRight={(e)=>setIsShowSlidebar(e)} />
           </div>
         )}
       </div>

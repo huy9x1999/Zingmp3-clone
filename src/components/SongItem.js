@@ -61,7 +61,7 @@ const SongItem = ({
           </div>
         )}
 
-        <div className="flex flex-grow flex-shrink justify-start">
+        <div className="flex w-full flex-grow flex-shrink justify-start">
           <div className="group w-10 h-10 flex-grow-0 flex-shrink-0 overflow-hidden rounded relative mr-2.5">
             <SmallThumbPlayMusic
               item={item}
@@ -69,14 +69,14 @@ const SongItem = ({
               albumId={albumId || null}
             />
           </div>
-          <div className="flex flex-col flex-grow flex-shrink">
+          <div className="flex flex-col flex-grow flex-shrink ">
             <h4 className="flex justify-start items-start">
               <span
                 className={`${
                   isCheckType() === "activeSlideType"
                     ? "text-white"
                     : "text-tx-gray "
-                } text-[14px] font-medium mb-[3px] leading-[1.3]`}
+                } text-[14px] font-medium mb-[3px] leading-[1.3] !max-w-[230px]`}
               >
                 <span className="flex gap-2 items-center justify-start">
                   <span className="text-overflow-1-line">{item.title}</span>
@@ -93,7 +93,7 @@ const SongItem = ({
                 isCheckType() === "activeSlideType"
                   ? "text-white/60"
                   : "text-tx-gray "
-              } leading-none text-[12px] text-overflow-1-line`}
+              } block leading-none text-[12px] text-overflow-1-line !max-w-[230px]`}
             >
               {item.artists ? (
                 item.artists.map((artist, index) => {

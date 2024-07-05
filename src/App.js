@@ -9,17 +9,9 @@ import {
 } from "./containers/public/";
 import { Routes, Route } from "react-router-dom";
 import path from "./utils/path";
-import * as actions from "./store/actions";
-import { useDispatch } from "react-redux";
-import { useEffect } from "react";
 import Search from "./containers/public/Search";
 
 function App() {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(actions.getHome());
-  }, []);
 
   return (
     <div className="App">

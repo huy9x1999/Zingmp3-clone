@@ -4,11 +4,17 @@ const initState = {
   homeData: null,
   top100Data: null,
   newReleaseChartData: null,
-  isPlaying: false
+  isPlaying: false,
+  isLoadHome:false
 };
 
 const appReducer = (state = initState, action) => {
   switch (action.type) {
+    case actionType.CHANGE_LOAD_HOME:
+      return {
+        ...state,
+        isLoadHome: action.load
+      };
     case actionType.GET_HOME:
       return {
         ...state,

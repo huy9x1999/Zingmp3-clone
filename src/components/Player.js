@@ -23,7 +23,7 @@ const Player = ({ setIsShowSlidebar, isShowRightSlidebar }) => {
     PiMonitorLight,
     BsMusicNoteList,
     HiMiniSpeakerWave,
-    HiMiniSpeakerXMark
+    HiMiniSpeakerXMark,
   } = icons;
 
   const { curSongId, atAlbum, listAlbum } = useSelector((state) => state.music);
@@ -44,7 +44,7 @@ const Player = ({ setIsShowSlidebar, isShowRightSlidebar }) => {
     const fetchDetailSong = async () => {
       const [res1, res2] = await Promise.all([
         apis.apiGetDetailSong(curSongId),
-        apis.apiGetSong(curSongId)
+        apis.apiGetSong(curSongId),
       ]);
 
       if (curSongId) {
@@ -137,22 +137,33 @@ const Player = ({ setIsShowSlidebar, isShowRightSlidebar }) => {
   return (
     <div className="bg-main-400 px-5 h-full border-t border-black/5 flex items-center">
       <div className="w-[30%] flex flex-auto items-center gap-2.5">
-        <div className="flex ">
-          <img
-            src={songInfo?.thumbnail}
-            alt=""
-            className="flex-shrink-0 w-16 h-16 object-cover rounded-md mr-2.5"
-          />
-          <div className="flex flex-auto flex-grow flex-shrink flex-col items-start justify-center inter-font">
-            <Link className="font-medium text-primary text-[14px] leading-[1.36] pr-2.5 text-overflow-1-line">
-              {songInfo?.title}
-            </Link>
-
-            <Link className="mt-[1px] text-tx-gray text-[11.5px] font-medium inline-block text-overflow-1-line-flex">
-              {songInfo?.artistsNames}
-            </Link>
+        {isLoading ? (
+          <div className="animate-pulse flex">
+            <div className="flex-shrink-0 w-16 h-16 bg-gray-400 rounded-lg dark:bg-gray-900"></div>
+            <div className="ml-4 flex-auto flex-grow flex-shrink ">
+              <p className="w-36 h-4 bg-gray-400 rounded dark:bg-gray-900 mb-4"></p>
+              <p className="w-28 h-3 bg-gray-400 rounded dark:bg-gray-900"></p>
+            </div>
           </div>
-        </div>
+        ) : (
+          <div className="flex ">
+            <img
+              src={songInfo?.thumbnail}
+              alt=""
+              className="flex-shrink-0 w-16 h-16 object-cover rounded-md mr-2.5"
+            />
+            <div className="flex flex-auto flex-grow flex-shrink flex-col items-start justify-center inter-font">
+              <Link className="font-medium text-primary text-[14px] leading-[1.36] pr-2.5 text-overflow-1-line">
+                {songInfo?.title}
+              </Link>
+
+              <Link className="mt-[1px] text-tx-gray text-[11.5px] font-medium inline-block text-overflow-1-line-flex">
+                {songInfo?.artistsNames}
+              </Link>
+            </div>
+          </div>
+        )}
+
         <div className="flex flex-shrink-0 text-primary">
           <div className="p-2 mx-0.5 flex items-center justify-center">
             <GoHeart size={16} />
