@@ -2,7 +2,7 @@ import React from 'react'
 
 const Personal = () => {
   return (
-    <div>Personal</div>
+    <div className='flex items-center justify-center h-[300px]'>Tinh nang chua phat trien</div>
   )
 }
 

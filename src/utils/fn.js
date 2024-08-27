@@ -1,4 +1,4 @@
-
+import mockListSong from '../mock-data/mock-list-song.json';
 
 export const getArrSlider = (start, end, number) => {
   const limit = start > end ? number : end;
@@ -135,3 +135,26 @@ export const rankStatus = (number) => {
     icon: 'none'
   };
 };
+
+
+export const getInfoSong =  (id)=>{
+  const infoSong = mockListSong.find((item)=>item.data.encodeId === id);
+  console.log(infoSong);
+  
+  if(infoSong){
+    return infoSong.data
+  }else{
+    console.log(mockListSong[0]);
+    
+    return mockListSong[0].data
+  }
+}
+
+export const getMp3Song =  (id)=>{
+  const infoSong = mockListSong.find((item)=>item.data.encodeId === id);
+  if(infoSong){
+    return infoSong
+  }else{
+    return mockListSong[0]
+  }
+}

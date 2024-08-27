@@ -1,5 +1,7 @@
 import actionType from "./actionTypes";
 import * as apis from "../../apis";
+import dataMock from '../../mock-data/mock-playlist.json';
+import * as action from "../../store/actions";
 
 export const fetchDetailPlayList = (curSongId) => async (dispatch) => {
   try {
@@ -19,7 +21,16 @@ export const fetchDetailPlayList = (curSongId) => async (dispatch) => {
       });
     }
   } catch (err) {
-    dispatch({ type: actionType.GET_PLAYLIST, playList: null });
+    if(err.message==="Network Error"){
+      dispatch({
+        type: actionType.GET_PLAYLIST,
+        playList: dataMock.data,
+      });
+      
+      dispatch(action.getErrMessage('API 503 Network Error,504 API gateway timeout, This is Mock data',true))
+    }else{
+      dispatch({ type: actionType.GET_PLAYLIST, playList: null });
+    }
     dispatch({
       type: actionType.CHANGE_LOAD_PLAYLIST,
       isLoad: false,

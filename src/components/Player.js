@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 import icons from "../utils/icons";
 import * as action from "../store/actions";
 import moment from "moment";
+import dataMock from '../mock-data/mock-music.json'
+import { getInfoSong, getMp3Song } from "../utils/fn";
 
 var intervalId;
 
@@ -73,7 +75,17 @@ const Player = ({ setIsShowSlidebar, isShowRightSlidebar }) => {
     };
 
     audio.currentTime = 0;
-    fetchDetailSong();
+    fetchDetailSong().then().catch((err=>{
+      if(err.message==="Network Error"){
+        setSongInfo(getInfoSong(curSongId));
+        dispatch(action.setCurSongData(getInfoSong(curSongId)));
+        audio.pause();
+        setAudio(new Audio(getMp3Song(curSongId).song["128"]));
+        setIsLoading(false);
+      }else{
+        setSongInfo(null);
+      }
+    }));
   }, [curSongId]);
 
   useEffect(() => {
@@ -135,6 +147,9 @@ const Player = ({ setIsShowSlidebar, isShowRightSlidebar }) => {
   useEffect(() => {
     audio.volume = valueSpeaker / 100;
   }, [valueSpeaker, audio]);
+
+  console.log(songInfo,audio);
+  
 
   return (
     <div className="bg-main-400 px-5 h-full border-t border-black/5 flex items-center">

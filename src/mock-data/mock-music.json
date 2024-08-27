@@ -1,0 +1,119 @@
+{
+    "err": 0,
+    "msg": "Success",
+    "data": {
+        "encodeId": "Z78UCIEZ",
+        "title": "Nổi Gió Lên",
+        "alias": "Noi-Gio-Len-Phan-Nhu-Thuy",
+        "isOffical": true,
+        "username": "",
+        "artistsNames": "Phan Như Thùy",
+        "artists": [
+            {
+                "id": "IW8AZ9FO",
+                "name": "Phan Như Thùy",
+                "link": "/nghe-si/Phan-Nhu-Thuy-IW8AZ9FO",
+                "spotlight": false,
+                "alias": "Phan-Nhu-Thuy-IW8AZ9FO",
+                "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/avatars/e/1/6/2/e1629bef8130f26718bffcafe737d1ca.jpg",
+                "thumbnailM": "https://photo-resize-zmp3.zmdcdn.me/w360_r1x1_jpeg/avatars/e/1/6/2/e1629bef8130f26718bffcafe737d1ca.jpg",
+                "isOA": false,
+                "isOABrand": false,
+                "playlistId": "6BEUZCAW",
+                "totalFollow": 385
+            }
+        ],
+        "isWorldWide": false,
+        "thumbnailM": "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/cover/8/e/8/b/8e8b7d2254dd3e5f93fa1438661849c0.jpg",
+        "link": "/bai-hat/Noi-Gio-Len-Phan-Nhu-Thuy/Z78UCIEZ.html",
+        "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w94_r1x1_jpeg/cover/8/e/8/b/8e8b7d2254dd3e5f93fa1438661849c0.jpg",
+        "duration": 287,
+        "zingChoice": false,
+        "isPrivate": false,
+        "preRelease": false,
+        "releaseDate": 1718902800,
+        "genreIds": [
+            "IWZ9Z08I",
+            "IWZ9Z088",
+            "IWZ97FCD"
+        ],
+        "distributor": "VIEENT Music",
+        "indicators": [],
+        "isIndie": false,
+        "streamingStatus": 1,
+        "allowAudioAds": true,
+        "hasLyric": true,
+        "userid": 342,
+        "genres": [
+            {
+                "id": "IWZ9Z08I",
+                "name": "Việt Nam",
+                "title": "Việt Nam",
+                "alias": "viet-nam",
+                "link": "/the-loai-album/Viet-Nam/IWZ9Z08I.html"
+            },
+            {
+                "id": "IWZ97FCD",
+                "name": "V-Pop",
+                "title": "V-Pop",
+                "alias": "v-pop",
+                "link": "/the-loai-album/V-Pop/IWZ97FCD.html"
+            }
+        ],
+        "composers": [
+            {
+                "id": "IWZAD760",
+                "name": "Nhạc Hoa Lời Việt",
+                "link": "/nghe-si/Nhac-Hoa-Loi-Viet-IWZAD760",
+                "spotlight": false,
+                "alias": "Nhac-Hoa-Loi-Viet-IWZAD760",
+                "cover": "https://zmp3-static.zmdcdn.me/skins/zmp3-v5.2/images/default_cover.png",
+                "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/avatars/1/a/2/7/1a27769dccc5d485f84a9b68bd666be0.jpg",
+                "totalFollow": 2836
+            }
+        ],
+        "album": {
+            "encodeId": "6CU0F7DW",
+            "title": "Nổi Gió Lên (Single)",
+            "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w165_r1x1_jpeg/cover/8/e/8/b/8e8b7d2254dd3e5f93fa1438661849c0.jpg",
+            "isoffical": true,
+            "link": "/album/Noi-Gio-Len-Single-Phan-Nhu-Thuy/6CU0F7DW.html",
+            "isIndie": false,
+            "releaseDate": "21/06/2024",
+            "sortDescription": "",
+            "releasedAt": 1718902800000,
+            "genreIds": [
+                "IWZ9Z08I",
+                "IWZ9Z088",
+                "IWZ97FCD"
+            ],
+            "PR": false,
+            "artists": [
+                {
+                    "id": "IW8AZ9FO",
+                    "name": "Phan Như Thùy",
+                    "link": "/nghe-si/Phan-Nhu-Thuy-IW8AZ9FO",
+                    "spotlight": false,
+                    "alias": "Phan-Nhu-Thuy-IW8AZ9FO",
+                    "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/avatars/e/1/6/2/e1629bef8130f26718bffcafe737d1ca.jpg",
+                    "thumbnailM": "https://photo-resize-zmp3.zmdcdn.me/w360_r1x1_jpeg/avatars/e/1/6/2/e1629bef8130f26718bffcafe737d1ca.jpg",
+                    "isOA": false,
+                    "isOABrand": false,
+                    "playlistId": "6BEUZCAW",
+                    "totalFollow": 385
+                }
+            ],
+            "artistsNames": "Phan Như Thùy"
+        },
+        "isRBT": false,
+        "like": 165748,
+        "listen": 4514728,
+        "liked": false,
+        "comment": 107
+    },
+    "timestamp": 1724737816211,
+    "song": {
+        "128": "https://a128-z3.zmdcdn.me/2c499b030a22a6209774dfac4551df4c?authen=exp=1724910568~acl=/2c499b030a22a6209774dfac4551df4c/*~hmac=538ac9aa5a5c4476452fa4ed78015386",
+        "320": "VIP"
+    }
+}
