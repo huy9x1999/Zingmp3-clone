@@ -42,6 +42,10 @@ const Player = ({ setIsShowSlidebar, isShowRightSlidebar }) => {
   const trackRef = useRef();
 
   useEffect(() => {
+    setAudio(new Audio())
+    console.log();
+    
+    audio.pause();
     setIsLoading(true);
     dispatch(action.getErrMessage('',false))
     const fetchDetailSong = async () => {
@@ -90,7 +94,7 @@ const Player = ({ setIsShowSlidebar, isShowRightSlidebar }) => {
 
   useEffect(() => {
     if (isPlaying) {
-      if (!isFail && songInfo?.encodeId) {
+      if (!isFail && songInfo?.encodeId && audio) {
         audio.play();
       }
     } else {
@@ -102,13 +106,13 @@ const Player = ({ setIsShowSlidebar, isShowRightSlidebar }) => {
 
   useEffect(() => {
     audio.load();
-    if (!isLoading && isPlaying && songInfo?.streamingStatus !== 2)
+    if (audio && !isLoading && isPlaying && songInfo?.streamingStatus !== 2)
       audio.play();
   }, [audio]);
 
   useEffect(() => {
     intervalId && clearInterval(intervalId);
-    if (isPlaying) {
+    if (isPlaying && audio) {
       intervalId = setInterval(() => {
         let precent =
           Math.round((audio.currentTime * 10000) / songInfo?.duration) / 100;
